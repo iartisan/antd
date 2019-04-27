@@ -43,8 +43,9 @@ import PoliticsServices from './containers/6sServices/PoliticsServices/PoliticsS
 // bottom Navigator start
 const HomeNavigator = createBottomTabNavigator({
   '6S服务': { screen: Home },
-  '投资平台': { screen: Finace},
-  '项目协调': { screen: Coordinate },
+  '企业分析': {screen: EnterpriseAnalyze},
+  '投资合作': { screen: Finace},
+  '项目推进': { screen: Coordinate },
   '关于': { screen: Account },
 })
 
@@ -66,7 +67,7 @@ const MainNavigator = createStackNavigator(
 
     //项目运行服务
     EnterpriseServices: {screen: EnterpriseServices},
-    EnterpriseAnalyze: {screen: EnterpriseAnalyze},
+    // EnterpriseAnalyze: {screen: EnterpriseAnalyze},
 
     // 项目推送服务
     ProjectPushServices: {screen: ProjectPushServices},
@@ -90,11 +91,6 @@ const MainNavigator = createStackNavigator(
 )
 // main navigator end
 
-// const EnterpriseServicesNavigator = createStackNavigator{
-//   {
-
-//   }
-// }
 
 //login navigator start
 const AppNavigator = createStackNavigator(

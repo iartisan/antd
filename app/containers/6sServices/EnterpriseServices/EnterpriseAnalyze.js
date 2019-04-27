@@ -16,6 +16,12 @@ class EnterpriseAnalyze extends Component {
     };
   }
 
+  static navigationOptions = {
+    tabBarIcon: ({ focused, tintColor }) => (
+        <Icon name="rise" size="lg" style={{color: focused? tintColor: 'gray'}}  />
+    ),
+  }
+
   productionData=
         [['中纺粮油（广元）有限公司', 147585, 1456479, 118423,1187195,112358, 1443465, 116930, 1174771, 21.26, 22.68, 24.63, 10.03]];
 

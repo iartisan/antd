@@ -18,16 +18,9 @@ class Coordinate extends Component {
   }
 
   static navigationOptions = {
-    title: '6S',
-    headerTitle: '6s服务',
-    tabBarLabel: '项目协调',
+    tabBarLabel: '项目推进',
     tabBarIcon: ({ focused, tintColor }) => (
-        // <Icon name="rise" size="lg" color={{tintColor: focused? tintColor: 'gray'}} />
         <Icon name="sliders" size="lg"  style={{color: focused? tintColor: 'gray'}} />
-    //   <Image
-    //     style={[styles.icon, { tintColor: focused ? tintColor : 'gray' }]}
-    //     source={require('../images/house.png')}
-    //   />
     ),
   }
 

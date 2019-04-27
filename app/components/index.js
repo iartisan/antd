@@ -1,3 +1,5 @@
 export { default as Button } from './Button'
 export { default as Touchable } from './Touchable'
 export { default as IconFont } from './IconFont'
+export { default as  ReadingStatus } from './ReadingStatus'
+export { default as  FormStatus } from './FormStatus'

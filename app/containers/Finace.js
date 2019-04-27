@@ -18,9 +18,7 @@ class Finace extends Component {
   }
 
   static navigationOptions = {
-    title: '6S',
-    headerTitle: '6s服务',
-    tabBarLabel: '投资平台',
+    tabBarLabel: '投资合作',
     tabBarIcon: ({ focused, tintColor }) => (
         // <Icon name="rise" size="lg" color={{tintColor: focused? tintColor: 'gray'}} />
         <Icon name="rise" size="lg" style={{color: focused? tintColor: 'gray'}}  />

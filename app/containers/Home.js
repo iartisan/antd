@@ -2,16 +2,17 @@ import React, { Component } from 'react'
 import { StyleSheet, ScrollView, View, Image, Text } from 'react-native'
 import { connect } from 'react-redux'
 
-import {IconFont} from "../components";
 // import { Button } from '../components'
 import { WhiteSpace, WingBlank, Icon, Card, Button, Grid } from '@ant-design/react-native';
-import { ECharts } from 'react-native-echarts-wrapper';
 
 import { NavigationActions } from '../utils'
+import {IconFont} from "../components";
+import {ReadingStatus} from '../components';
 // "@bang88/china-city-data": "^1.0.0",
 
 @connect()
 class Home extends Component {
+  //Header
   static navigationOptions = {
     tabBarLabel: '6S服务',
     tabBarIcon: ({ focused, tintColor }) => (
@@ -22,77 +23,7 @@ class Home extends Component {
     ),
   }
 
-  // data = Array.from(new Array(9)).map((_val, i)=>({
-  //   icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png',
-  //   text: `Name${i}`
-  // }));
-
-  LiveWeeklyOption = {
-    title: {
-      text: 'APP使用率周况',
-      x:  'center',
-      y: '5%',
-      textStyle: {
-        color: '#ccc'
-      }
-    },
-    backgroundColor: '#2c343c',
-    xAxis: {
-        type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-        type: 'value',
-        splitLine: {
-          show: false
-        }
-    },
-    grid: {
-      x: 0,
-      y: 0,
-      width: '100%',
-      height: '100%'
-    },
-    series: [{
-        data: [222, 123, 123, 123, 43, 532, 123],
-        type: 'line',
-        areaStyle: {}
-    }]
-  }
-  surveyData = [
-    {
-      icon: <IconFont name='&#xe658;' size={70} style={{ color: '#ccc'}} /> ,
-      data: 3,
-      text: `下载量`
-    },
-    {
-      icon: <Icon name={'bar-chart'} />,
-      data: 3,
-      text: `注册企业`
-    },
-    {
-      icon: <Icon name={'bar-chart'} />,
-      data: 3,
-      text: `注册用户`
-    },
-    // {
-    //   icon: <Icon name={'bar-chart'} />,
-    //   data: 3,
-    //   text: `日活跃度`
-    // },
-    // {
-    //   icon: <Icon name={'bar-chart'} />,
-    //   data: 3,
-    //   text: `月活跃度`
-    // },
-    // {
-    //   icon: <Icon name={'bar-chart'} />,
-    //   data: 3,
-    //   text: `年活跃度`
-    // },
-  ]
-
-
+  //menu6s
   menu6sData = [
     {
       icon: <IconFont name='&#xe658;' size={70} style={{ color: '#ccc'}} /> ,
@@ -126,50 +57,59 @@ class Home extends Component {
     },
   ]
 
-  menuFinaceData = [
+  //Finance Part
+  echartFinance=[
+    ['Mon', 1],
+    ['Tue', 2],
+    ['Wed', 3],
+    ['Thu', 4],
+    ['Fri', 5],
+    ['Sat', 6],
+    ['Sun', 7]
+  ]
+  menuFinanceData = [
     {
-      icon: <Icon name={'bar-chart'} />,
-      text: `浏览量`
+      text: `浏览量`,
+      data: 1233
     },
     {
-      icon: <Icon name={'bar-chart'} />,
-      text: `提交申请`
+      text: `提交申请`,
+      data: 233
     },
     {
-      icon: <Icon name={'bar-chart'} />,
-      text: `合作成功`
+      text: `合作成功`,
+      data: 212
     },
   ]
+  
 
+  // News Part
+  echartNews=[
+    ['Mon', 7],
+    ['Tue', 6],
+    ['Wed', 5],
+    ['Thu', 4],
+    ['Fri', 3],
+    ['Sat', 2],
+    ['Sun', 1]
+
+  ]
   menuNewsData = [
     {
-      icon: <Icon name={'bar-chart'} />,
-      text: `浏览量`
+      text: `浏览量`,
+      data: 1233
     },
     {
-      icon: <Icon name={'bar-chart'} />,
-      text: `点赞数`
+      text: `点赞数`,
+      data: 123
     },
     {
-      icon: <Icon name={'bar-chart'} />,
-      text: `分享数`
+      text: `分享数`,
+      data: 112
     },
   ]
 
-  option = {
-    xAxis: {
-        type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-        type: 'value'
-    },
-    series: [{
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
-        type: 'line',
-        areaStyle: {}
-    }]
-  }
+  //Account Part wait to add
 
   gotoScreen=(routeName) => {
     this.props.dispatch(NavigationActions.navigate({ routeName: routeName }))
@@ -182,29 +122,11 @@ class Home extends Component {
        style={styles.container}
        contentContainerStyle={styles.containerContent}
       >
-        <View style={styles.echartWrapper}>
-                  <WhiteSpace />
-                  <ECharts option={this.LiveWeeklyOption}></ECharts>
-        </View>
-        <View style={styles.surveyWrapper}>
-          <WingBlank size={"lg"}>
-          <WingBlank size={"lg"}>
-          <View style={styles.surveyContainer}>
-          {this.surveyData.map((_obj, i)=>
-            {
-              return (
-              <View style={(i==this.surveyData.length-1)?styles.surveyLastItem: styles.surveyItem}>
-                <Text style={{color: '#ccc'}}>{_obj.data}</Text>
-                <Text style={{color: '#ccc'}}>{_obj.text}</Text>
-              </View>
-              );
-            }
-          )}
-          </View>
-          </WingBlank>
-          </WingBlank>
-        </View>
+
+      <ReadingStatus />
         <View style={{backgroundColor: '#fff'}}>
+
+
                 <Button>6S服务</Button>
                 <Grid
                   data={this.menu6sData}
@@ -214,60 +136,14 @@ class Home extends Component {
                   hasLine={true}
                 />
           </View>
+
           <WhiteSpace />
-         <Card>
-            <Card.Header
-              title="投资昭化"
-              // thumbStyle={{ width: 30, height: 30 }}
-              // thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
-              // extra="2019年4月20日"
-            />
-            <Card.Body>
-              <View style={styles.echartWrapper}>
-                        <ECharts option={this.option}></ECharts>
-              </View>
-              <View style={{}}>
-                <Grid
-                  data={this.menuFinaceData}
-                  columnNum={3}
-                  // isCarousel
-                  onPress={(_el, index) => alert(index)}
-                  hasLine={true}
-                />
-              </View>
-            </Card.Body>
-            {/* <Card.Footer
-              content="月上线人数360人"
-              extra="日上线人数45人"
-            /> */}
-          </Card>
+          <Button>投资昭化</Button>
+          <ReadingStatus title="投资昭化点击率" surveyData={this.menuFinanceData} echartData={this.echartFinance} />
+
           <WhiteSpace />
-         <Card>
-            <Card.Header
-              title="昭化咨讯"
-              // thumbStyle={{ width: 30, height: 30 }}
-              // thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
-              // extra="2019年4月20日"
-            />
-            <Card.Body>
-              <View style={styles.echartWrapper}>
-                        <ECharts option={this.option}></ECharts>
-              </View>
-              <View style={{}}>
-                <Grid
-                  data={this.menuNewsData}
-                  columnNum={3}
-                  // isCarousel
-                  onPress={(_el, index) => alert(index)}
-                  hasLine={false}
-                />
-              </View>
-            </Card.Body>
-            {/* <Card.Footer
-              content="月上线人数360人"
-              extra="日上线人数45人"
-            /> */}
-          </Card>
+          <Button>昭化资讯</Button>
+          <ReadingStatus title='昭化资讯点击率' surveyData={this.menuNewsData}  echartData={this.echartNews} />
 
       </ScrollView>
     )
@@ -281,47 +157,6 @@ const styles = StyleSheet.create({
   containerContent: {
     // alignItems: 'center',
     // justifyContent: 'center',
-  },
-  echartWrapper: {
-    height: 200,
-    backgroundColor: '#2c343c',
-    // paddingLeft: 20,
-  },
-  surveyWrapper:{
-    backgroundColor: '#2c343c',
-    // position: 'relative',
-    // top: -100,
-    // backgroundColor: '#fff',
-    // width: 380,
-    paddingBottom:20,
-  },
-  surveyContainer:{
-    paddingTop: 10,
-    paddingBottom: 10,
-    flexDirection: 'row',
-    backgroundColor: '#c23531',
-    borderBottomLeftRadius: 5,
-    borderBottomRightRadius: 5,
-
-
-  },
-  surveyItem: {
-    backgroundColor: '#c23531',
-    height: 50,
-    flex:1,
-    alignContent: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRightWidth: 0.3,
-    borderRightColor: '#ccc'
-  },
-  surveyLastItem: {
-    backgroundColor: '#c23531',
-    height: 50,
-    flex:1,
-    alignContent: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   icon: {
     width: 32,
